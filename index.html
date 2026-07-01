@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>The Setter Playbook · Rapid Reach</title>
+<meta name="description" content="The cold-call framework for setters: opener, pain discovery, pain-to-product, the pitches, objections, and booking the Zoom." />
+<meta name="theme-color" content="#020817" />
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://grantenyeart.github.io/setter-playbook/">
+<meta property="og:title" content="The Setter Playbook">
+<meta property="og:description" content="The cold-call framework for setters: open, diagnose the pain, match the product, and book the Zoom.">
+<meta property="og:image" content="https://grantenyeart.github.io/setter-playbook/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Setter Playbook">
+<meta name="twitter:description" content="The cold-call framework for setters: open, diagnose the pain, match the product, and book the Zoom.">
+<meta name="twitter:image" content="https://grantenyeart.github.io/setter-playbook/og.png">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#020817; --bg2:#01030a;
+    --card:#0b1322; --card2:#101c33; --border:#1e293b; --border2:#27364b;
+    --text:#f8fafc; --muted:#94a3b8; --muted2:#64748b;
+    --gold:#f59e0b; --gold2:#eab308; --green:#34d399; --red:#f87171;
+    --grad:linear-gradient(135deg,#f59e0b,#eab308);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{ font-family:'Inter',ui-sans-serif,system-ui,-apple-system,sans-serif; background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased; }
+  body::before{
+    content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+    background:
+      radial-gradient(900px 500px at 80% -10%, rgba(245,158,11,.10), transparent 60%),
+      radial-gradient(700px 500px at 0% 110%, rgba(234,179,8,.06), transparent 60%),
+      linear-gradient(180deg, var(--bg), var(--bg2));
+  }
+  .scroller{ position:relative; z-index:1; height:100svh; overflow-y:auto; scroll-snap-type:y proximity; }
+  .slide{ min-height:100svh; scroll-snap-align:start; display:flex; flex-direction:column; justify-content:center; padding:64px 22px 110px; max-width:1000px; margin:0 auto; }
+  .kicker{ font-size:13px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-bottom:14px; }
+  h1.title{ font-size:clamp(30px,6.4vw,52px); font-weight:900; line-height:1.05; letter-spacing:-.02em; }
+  h2.title{ font-size:clamp(24px,5vw,38px); font-weight:800; line-height:1.08; letter-spacing:-.02em; margin-bottom:16px;}
+  .gold{ background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .lead{ color:var(--muted); font-size:clamp(15px,2.4vw,19px); line-height:1.55; max-width:760px; margin-bottom:8px;}
+  .tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;color:var(--muted2);margin-bottom:14px;text-transform:uppercase;}
+  .mark{display:flex; gap:8px; margin-bottom:26px;}
+  .mark span{width:16px;height:16px;border-radius:4px;background:var(--grad);}
+  .mark span:nth-child(2){opacity:.66} .mark span:nth-child(3){opacity:.4}
+  .monogram-wrap{flex:1 1 auto;display:flex;align-items:center;justify-content:center;width:100vw;margin-left:calc(50% - 50vw);min-height:0;}
+  .monogram{ font-family:'Playfair Display',Georgia,'Times New Roman',serif; font-weight:900; font-size:clamp(96px,17vw,200px); line-height:1; letter-spacing:.03em; background:linear-gradient(165deg,#f7de8b 0%,#e6b23e 42%,#c9962a 72%,#9c7a22 100%); -webkit-background-clip:text; background-clip:text; color:transparent; filter:drop-shadow(0 10px 34px rgba(230,178,62,.22)); }
+  .grid{display:grid; gap:16px; margin-top:8px;}
+  .card{ background:linear-gradient(180deg,var(--card),var(--card2)); border:1px solid var(--border); border-radius:16px; padding:20px; box-shadow:0 10px 30px rgba(0,0,0,.35); }
+  .ch{font-weight:800; font-size:18px; margin:0 0 6px;}
+  .cd{color:var(--muted); font-size:15px; line-height:1.5;}
+  .rows{display:flex;flex-direction:column;gap:13px;margin-top:6px;}
+  .row{display:flex;gap:16px;align-items:flex-start;}
+  .num{ width:38px;height:38px;border-radius:10px; flex:0 0 auto; display:flex;align-items:center;justify-content:center; font-weight:900; font-size:16px; color:#0f172a; background:var(--grad); box-shadow:0 6px 16px rgba(245,158,11,.35); }
+  .qtext{font-size:clamp(15px,2.4vw,18px);font-weight:600;line-height:1.4;}
+  .saythis{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+  .pitch{font-style:italic;color:#e2e8f0;font-size:15.5px;line-height:1.5;}
+  .pill{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:12px;padding:11px 15px;font-weight:600;font-size:14.5px;}
+  .pill .dot{width:25px;height:25px;border-radius:8px;background:var(--grad);color:#0f172a;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;flex:0 0 auto;}
+  .twocol{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media(max-width:760px){.twocol{grid-template-columns:1fr;}}
+  .obj{display:flex;flex-direction:column;gap:12px;margin-top:4px;}
+  .objrow{display:grid;grid-template-columns:1fr 1.5fr;gap:14px;align-items:center;background:linear-gradient(180deg,var(--card),var(--card2));border:1px solid var(--border);border-radius:13px;padding:13px 16px;}
+  @media(max-width:760px){.objrow{grid-template-columns:1fr;gap:5px;}}
+  .objrow .o{font-weight:700;color:#fff;font-size:15px;}
+  .objrow .m{color:var(--muted);font-size:14.5px;line-height:1.4;}
+  .objrow .m::before{content:"\2192  ";color:var(--gold);font-weight:800;}
+  .talk{ margin-top:20px; background:rgba(245,158,11,.07); border:1px solid rgba(245,158,11,.22); border-radius:14px; padding:15px 18px; }
+  .talk .lh{font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:7px;}
+  .talk p{color:#e2e8f0;font-size:14.5px;line-height:1.5;}
+  .big-takeaway{font-size:clamp(20px,4.4vw,32px);font-weight:900;line-height:1.18;margin-top:8px;}
+  .reflink{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(245,158,11,.4);}
+  .progress{position:fixed;top:0;left:0;height:3px;background:var(--grad);width:0;z-index:30;transition:width .15s ease;}
+  .counter{position:fixed;bottom:18px;right:18px;z-index:30;font-size:13px;font-weight:700;color:var(--muted);background:rgba(2,8,23,.8);border:1px solid var(--border);border-radius:999px;padding:7px 13px;backdrop-filter:blur(6px);}
+  .counter b{color:var(--gold);}
+  .nav{position:fixed;bottom:16px;left:18px;z-index:30;display:flex;gap:8px;}
+  .nav button{width:42px;height:42px;border-radius:11px;border:1px solid var(--border);background:rgba(2,8,23,.8);color:var(--text);font-size:18px;cursor:pointer;backdrop-filter:blur(6px);transition:.15s;}
+  .nav button:hover{border-color:var(--gold);color:var(--gold);}
+  .foot{margin-top:auto;}
+  .hint{position:fixed;bottom:64px;left:0;right:0;text-align:center;color:var(--muted2);font-size:12px;z-index:20;animation:fade 2.6s ease forwards;}
+  @keyframes fade{0%,70%{opacity:.8}100%{opacity:0}}
+</style>
+</head>
+<body>
+<div class="progress" id="prog"></div>
+<div class="counter"><b id="cur">01</b> / <span id="tot">17</span></div>
+<div class="nav"><button id="up" aria-label="Previous">&uarr;</button><button id="down" aria-label="Next">&darr;</button></div>
+<div class="hint">swipe / scroll &middot; or use &uarr; &darr;</div>
+
+<div class="scroller" id="scroller">
+
+  <!-- 1 TITLE -->
+  <section class="slide">
+    <div class="mark"><span></span><span></span><span></span></div>
+    <div class="kicker">Rapid Reach &middot; Setter Training</div>
+    <h1 class="title">The Setter <span class="gold">Playbook</span></h1>
+    <p class="lead" style="margin-top:18px;font-size:clamp(17px,2.8vw,22px);color:#cbd5e1;">The cold-call framework: open, diagnose, match, and book the Zoom.</p>
+    <div class="monogram-wrap"><div class="monogram">GE</div></div>
+    <div class="foot"><p class="kicker" style="margin:0;">Open &middot; Diagnose &middot; Match &middot; Pitch &middot; Book</p></div>
+  </section>
+
+  <!-- 2 GOLDEN RULE -->
+  <section class="slide">
+    <div class="kicker">Read This First</div>
+    <h2 class="title">A framework, not a robot script</h2>
+    <p class="lead">The lines in here are your defaults. The beats are fixed, the words are yours. You listen, then cater every call to what they actually tell you. No two calls sound the same.</p>
+    <div class="big-takeaway gold">Your one job on this call: book the Zoom with Grant. Not to close, not to pitch everything. Book the call.</div>
+    <div class="talk"><div class="lh">Talk track</div><p>If you sound like you're reading, you lose. Learn the beats, own the lines, then talk like a normal person who found something they genuinely need.</p></div>
+  </section>
+
+  <!-- 3 CALL MAP -->
+  <section class="slide">
+    <div class="kicker">The Call Map</div>
+    <h2 class="title">Every call walks this path</h2>
+    <div class="rows">
+      <div class="pill"><span class="dot">1</span> Open with the hook</div>
+      <div class="pill"><span class="dot">2</span> Read the fork: got room, or slammed?</div>
+      <div class="pill"><span class="dot">3</span> Diagnose the pain (3 questions)</div>
+      <div class="pill"><span class="dot">4</span> Match the pain to the product</div>
+      <div class="pill"><span class="dot">5</span> Position Rapid Reach, pitch the ONE that fits</div>
+      <div class="pill"><span class="dot">6</span> Handle the brush-offs</div>
+      <div class="pill"><span class="dot">7</span> Book the Zoom</div>
+    </div>
+    <div class="talk"><div class="lh">Talk track</div><p>The only place it branches is the diagnosis. Nail that and the rest of the call writes itself.</p></div>
+  </section>
+
+  <!-- 4 OPENER -->
+  <section class="slide">
+    <div class="kicker">Step 1 &middot; The Opener</div>
+    <h2 class="title">Hook them in 10 seconds</h2>
+    <div class="tag">Tonality: casual, confident, fast</div>
+    <div class="twocol">
+      <div class="card"><div class="saythis">The line</div><div class="pitch">"Hey, is this [Company]? Perfect, quick question. Could you take on around 10 more details a week right now, or are you all booked up?"</div></div>
+      <div class="card"><div class="saythis">Why it works + adapt</div><div class="cd">A pattern interrupt plus an instant qualifier. Match their pace. If they sound rushed, slow down and be respectful. The words flex, the beat (hook then question) does not.</div></div>
+    </div>
+    <div class="talk"><div class="lh">Talk track</div><p>Say it like you're doing them a favor, not asking for one. The question does the work. Then shut up and let them answer.</p></div>
+  </section>
+
+  <!-- 5 THE FORK -->
+  <section class="slide">
+    <div class="kicker">Step 1b &middot; Read The Answer</div>
+    <h2 class="title">Two roads, both lead to discovery</h2>
+    <div class="twocol">
+      <div class="card"><div class="saythis">If YES (they've got room)</div><div class="pitch">"Perfect, that's exactly why I'm calling. I work with detailers getting 15 to 20 extra bookings a week and I'm checking who can handle that volume. I actually found you on Google and your reviews really stood out."</div></div>
+      <div class="card"><div class="saythis">If NO (they're slammed)</div><div class="pitch">"Good for you, sounds like you're busy. Quick question though: are you the one doing most of the details AND answering all the calls?"</div></div>
+    </div>
+    <div class="talk"><div class="lh">Talk track</div><p>Never let "I'm busy" end the call. Busy means they're drowning in the work, which is your automation opening. Both answers roll straight into the diagnosis.</p></div>
+  </section>
+
+  <!-- 6 DIAGNOSE -->
+  <section class="slide">
+    <div class="kicker">Step 2 &middot; Diagnose The Pain</div>
+    <h2 class="title">3 questions that tell you what to sell</h2>
+    <div class="rows">
+      <div class="row"><div class="num">1</div><div class="qtext">"Where do most of your customers come from right now, Google, word of mouth, Facebook?"</div></div>
+      <div class="row"><div class="num">2</div><div class="qtext">"Do you have a website or online booking system set up?"</div></div>
+      <div class="row"><div class="num">3</div><div class="qtext">"Are you the one handling most of the calls and messages yourself?"</div></div>
+    </div>
+    <div class="talk"><div class="lh">Talk track</div><p>This is the whole game. You can't match a product to a pain you never uncovered. Ask, then listen. Their answers pick the pitch for you.</p></div>
+  </section>
+
+  <!-- 7 PAIN TO PRODUCT -->
+  <section class="slide">
+    <div class="kicker">The Decision Tree</div>
+    <h2 class="title">Match the pain to the product</h2>
+    <div class="obj">
+      <div class="objrow"><div class="o">"Word of mouth only, not enough calls"</div><div class="m">Lead Gen (rank #1 on Google)</div></div>
+      <div class="objrow"><div class="o">"No website, or an old one that won't convert"</div><div class="m">Website</div></div>
+      <div class="objrow"><div class="o">"Doing all the calls himself, missing calls"</div><div class="m">AI Automation / Receptionist</div></div>
+      <div class="objrow"><div class="o">"No follow-up, no repeat customers, no-shows"</div><div class="m">Detailer Growth System (DGS)</div></div>
+      <div class="objrow"><div class="o">"Wants more high-ticket ceramics"</div><div class="m">Flag it for Grant (Facebook ads)</div></div>
+    </div>
+    <div class="talk"><div class="lh">Talk track</div><p>Lead with the ONE that matches their biggest pain. Dumping all five is how you overwhelm them and lose the booking.</p></div>
+  </section>
+
+  <!-- 8 POSITION -->
+  <section class="slide">
+    <div class="kicker">Step 3 &middot; Position Rapid Reach</div>
+    <h2 class="title">Frame it as a growth system</h2>
+    <div class="twocol">
+      <div class="card"><div class="saythis">The line</div><div class="pitch">"What we built is a growth system specifically for detailing companies. Some shops we work with do $10k months, some do $30k to $60k. We help detailers scale no matter what stage they're at."</div></div>
+      <div class="card"><div class="saythis">The punch</div><div class="pitch">"Most detailers are amazing at detailing. They just never build the systems behind the business that let it actually grow."</div></div>
+    </div>
+    <div class="talk"><div class="lh">Talk track</div><p>You're not a telemarketer, you're the systems expert. This reframes them from "a detailer" to "a business that's missing the engine."</p></div>
+  </section>
+
+  <!-- 9 LEAD GEN -->
+  <section class="slide">
+    <div class="kicker">Primary Offer &middot; Lead Gen</div>
+    <h2 class="title">The offer that opens every door</h2>
+    <div class="twocol">
+      <div class="card"><div class="saythis">The pitch</div><div class="pitch">"The biggest thing we do is get detailers ranked high on Google so you consistently get calls and bookings. And we only partner with one detailer per city, so we never create competition between our own clients."</div></div>
+      <div class="card"><div class="saythis">The hook</div><div class="pitch">"No upfront cost. We only charge 10% of your average detail per qualified lead. So a $200 detail is $20 a lead, even if it turns into an $800 ceramic."</div></div>
+    </div>
+    <div class="talk"><div class="lh">Talk track</div><p>Lead with this every time. Performance-based, zero risk, one-per-city exclusivity. It's the easiest yes in the whole stack.</p></div>
+  </section>
+
+  <!-- 10 PRICING ORDER -->
+  <section class="slide">
+    <div class="kicker">Setter Rule &middot; Pricing Order</div>
+    <h2 class="title">Talk price without overwhelming</h2>
+    <div class="rows">
+      <div class="row"><div class="num">1</div><div class="qtext">Explain Lead Gen pricing FIRST. It's performance-based and the most attractive.</div></div>
+      <div class="row"><div class="num">2</div><div class="qtext">Position the Growth System as customizable to what they need.</div></div>
+      <div class="row"><div class="num">3</div><div class="qtext">Only give system price ranges AFTER they show interest.</div></div>
+    </div>
+    <div class="talk"><div class="lh">Talk track</div><p>Price is revealed on their curiosity, never dumped up front. Get them wanting it first, then the number feels small.</p></div>
+  </section>
+
+  <!-- 11 AI AUTOMATION -->
+  <section class="slide">
+    <div class="kicker">Offer &middot; AI Automation</div>
+    <h2 class="title">Sell the leak, not the tech</h2>
+    <div class="twocol">
+      <div class="card"><div class="saythis">The pitch</div><div class="pitch">"A lot of detailers lose around $3,000 a month just from missed calls and slow replies. So we built automation that responds to every message and missed call instantly."</div></div>
+      <div class="card"><div class="saythis">Pricing (after interest)</div><div class="cd">Message + missed-call automation runs about $500 to $750. The full AI receptionist that answers calls and books clients is around $1,000/month.</div></div>
+    </div>
+    <div class="talk"><div class="lh">Talk track</div><p>Lead with the $3,000 they're bleeding, never with "AI." For skeptics, frame it as a backup that just catches what they're already dropping.</p></div>
+  </section>
+
+  <!-- 12 DGS -->
+  <section class="slide">
+    <div class="kicker">Offer &middot; Detailer Growth System</div>
+    <h2 class="title">The full system behind the business</h2>
+    <div class="twocol">
+      <div class="card"><div class="saythis">What it includes</div><div class="cd">Booking links with upsells, SEO website, lead tracking dashboard, automated confirmations and reminders, review automation, CRM for memberships, and email + text campaigns.</div></div>
+      <div class="card"><div class="saythis">The frame + price</div><div class="cd">"Instead of just sending leads, we build the whole system so the business can actually scale." Core system starts around $300 to $500 a month.</div></div>
+    </div>
+    <div class="talk"><div class="lh">Talk track</div><p>It's our own software (never say white-label). Pitch only the pieces that match the pain they told you about, not the whole list.</p></div>
+  </section>
+
+  <!-- 13 WEBSITE -->
+  <section class="slide">
+    <div class="kicker">Offer &middot; Website</div>
+    <h2 class="title">For the "bad site or no site" pain</h2>
+    <div class="twocol">
+      <div class="card"><div class="saythis">The pitch</div><div class="pitch">"A high-converting, SEO website custom to your company. Even after we hand it over, we'll edit it to your liking unlimited times."</div></div>
+      <div class="card"><div class="saythis">Price</div><div class="cd">About $500 to $750 for the build, then around $18 a month for hosting.</div></div>
+    </div>
+    <div class="talk"><div class="lh">Talk track</div><p>Only pitch this when their diagnosis flagged a weak or missing site. Otherwise it's just noise that slows down the booking.</p></div>
+  </section>
+
+  <!-- 14 OBJECTIONS -->
+  <section class="slide">
+    <div class="kicker">The Brush-Offs</div>
+    <h2 class="title">Handle it, then steer to the Zoom</h2>
+    <div class="obj">
+      <div class="objrow"><div class="o">"How do I know this works?"</div><div class="m">"We're already doing this for detailers across the U.S. Higher rankings, consistent bookings, repeat customers."</div></div>
+      <div class="objrow"><div class="o">"What if I don't make money?"</div><div class="m">"Lead gen has no upfront risk. We only get paid when we send you qualified leads."</div></div>
+      <div class="objrow"><div class="o">"I need to think about it"</div><div class="m">"Totally. Is it the money, the timing, or just wanting to see how it works first?"</div></div>
+      <div class="objrow"><div class="o">"Just send me info"</div><div class="m">"Easiest way is a quick Zoom with Grant, he'll walk it visually. Mornings or afternoons?"</div></div>
+    </div>
+    <div class="talk"><div class="lh">Talk track</div><p>Every answer ends by pointing back at the Zoom. The objection isn't the enemy, the un-booked call is.</p></div>
+  </section>
+
+  <!-- 15 LLC / INSURANCE -->
+  <section class="slide">
+    <div class="kicker">Pre-Close Check</div>
+    <h2 class="title">LLC and insurance</h2>
+    <div class="card"><div class="saythis">The line</div><div class="pitch">"Before we get you onboarded, do you currently have an LLC and insurance set up?"</div></div>
+    <div class="twocol" style="margin-top:16px;">
+      <div class="card"><div class="saythis">If no</div><div class="cd">"No problem, we'll send you the links to get that set up."</div></div>
+      <div class="card"><div class="saythis">If yes</div><div class="cd">"Perfect."</div></div>
+    </div>
+    <div class="talk"><div class="lh">Talk track</div><p>Ask it like the deal is already happening. It quietly assumes the close and pre-qualifies them for onboarding.</p></div>
+  </section>
+
+  <!-- 16 BOOK THE ZOOM -->
+  <section class="slide">
+    <div class="kicker">The Close &middot; Your Only Goal</div>
+    <h2 class="title">Book the Zoom with Grant</h2>
+    <div class="card"><div class="saythis">The line</div><div class="pitch">"The next step is just a quick Zoom with Grant. He'll show you the system, learn your goals, and see if we're a good fit. He's got openings today and tomorrow, what works better, afternoon or evening?"</div></div>
+    <div class="rows" style="margin-top:16px;">
+      <div class="row"><div class="num">1</div><div class="qtext">Offer two specific windows, never "sometime"</div></div>
+      <div class="row"><div class="num">2</div><div class="qtext">Pin the exact time and confirm the timezone</div></div>
+      <div class="row"><div class="num">3</div><div class="qtext">Get their email for the invite</div></div>
+    </div>
+    <div class="talk"><div class="lh">Talk track</div><p>This is the entire point of the call. Two options, pin the time, lock the email. A set isn't a set until it's on the calendar.</p></div>
+  </section>
+
+  <!-- 17 ENDING + CLOSE -->
+  <section class="slide">
+    <div class="mark"><span></span><span></span><span></span></div>
+    <div class="kicker">Lock It In</div>
+    <h2 class="title">The ending that makes them show</h2>
+    <div class="card"><div class="saythis">The line</div><div class="pitch">"Perfect, you're all set. Grant will walk through everything and show you exactly how we set this up for detailing companies. At the end of the call he'll also send you a free full Google optimization video. Great talking to you, speak soon!"</div></div>
+    <div class="big-takeaway gold" style="margin-top:18px;">Open with the hook. Dig for the pain. Pitch the one thing that fixes it. Book the Zoom.</div>
+    <p class="lead" style="margin-top:14px;">More training: <a class="reflink" href="https://grantenyeart.github.io/closer-playbook/" target="_blank" rel="noopener">Closer's Playbook</a> &middot; <a class="reflink" href="https://grantenyeart.github.io/services-playbook/" target="_blank" rel="noopener">Services</a></p>
+    <div class="foot"><div class="big-takeaway gold" style="font-size:clamp(20px,4vw,28px);">Now go set.</div></div>
+  </section>
+
+</div>
+
+<script>
+  const scroller=document.getElementById('scroller');
+  const slides=[...document.querySelectorAll('.slide')];
+  const tot=slides.length;
+  document.getElementById('tot').textContent=String(tot).padStart(2,'0');
+  const curEl=document.getElementById('cur'), prog=document.getElementById('prog');
+  let idx=0;
+  const io=new IntersectionObserver((es)=>{
+    es.forEach(e=>{ if(e.isIntersecting){ idx=slides.indexOf(e.target);
+      curEl.textContent=String(idx+1).padStart(2,'0');
+      prog.style.width=((idx+1)/tot*100)+'%'; }});
+  },{root:scroller,threshold:.5});
+  slides.forEach(s=>io.observe(s));
+  function go(n){ n=Math.max(0,Math.min(tot-1,n)); slides[n].scrollIntoView({behavior:'smooth'});}
+  document.getElementById('down').onclick=()=>go(idx+1);
+  document.getElementById('up').onclick=()=>go(idx-1);
+  addEventListener('keydown',(e)=>{
+    if(['ArrowDown','PageDown',' '].includes(e.key)){e.preventDefault();go(idx+1);}
+    if(['ArrowUp','PageUp'].includes(e.key)){e.preventDefault();go(idx-1);}
+    if(e.key==='Home'){go(0);} if(e.key==='End'){go(tot-1);}
+  });
+</script>
+</body>
+</html>
