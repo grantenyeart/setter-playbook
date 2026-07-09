@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>The Script, Broken Down · Rapid Reach</title>
+<meta name="description" content="The setter call line by line, plus the full objection-handling bank and two annotated example calls." />
+<meta name="theme-color" content="#020817" />
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://grantenyeart.github.io/setter-playbook/script.html">
+<meta property="og:title" content="The Script, Broken Down">
+<meta property="og:description" content="The setter call line by line, the objection-handling bank, and two full annotated example calls.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#020817; --bg2:#01030a;
+    --card:#0b1322; --card2:#101c33; --border:#1e293b; --border2:#27364b;
+    --text:#f8fafc; --muted:#94a3b8; --muted2:#64748b;
+    --gold:#f59e0b; --gold2:#eab308; --green:#34d399; --blue:#60a5fa;
+    --grad:linear-gradient(135deg,#f59e0b,#eab308);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{ font-family:'Inter',ui-sans-serif,system-ui,-apple-system,sans-serif; background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased; line-height:1.5; }
+  body::before{
+    content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+    background:
+      radial-gradient(900px 500px at 85% -10%, rgba(245,158,11,.10), transparent 60%),
+      radial-gradient(700px 500px at 0% 110%, rgba(234,179,8,.05), transparent 60%),
+      linear-gradient(180deg, var(--bg), var(--bg2));
+  }
+  .wrap{position:relative; z-index:1; max-width:820px; margin:0 auto; padding:54px 22px 120px;}
+  .mark{display:flex; gap:8px; margin-bottom:22px;}
+  .mark span{width:15px;height:15px;border-radius:4px;background:var(--grad);}
+  .mark span:nth-child(2){opacity:.66} .mark span:nth-child(3){opacity:.4}
+  .kicker{ font-size:12.5px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-bottom:12px; }
+  h1{ font-size:clamp(30px,6vw,46px); font-weight:900; line-height:1.05; letter-spacing:-.02em; }
+  .sub{ color:#cbd5e1; font-size:clamp(16px,2.6vw,19px); line-height:1.55; margin-top:16px; max-width:680px;}
+  .toc{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px;}
+  .toc a{font-size:13px;font-weight:600;color:var(--muted);text-decoration:none;border:1px solid var(--border);border-radius:999px;padding:7px 14px;transition:.15s;}
+  .toc a:hover{border-color:var(--gold);color:var(--gold);}
+  section{margin-top:56px; scroll-margin-top:20px;}
+  .sec-h{display:flex;align-items:baseline;gap:12px;border-bottom:1px solid var(--border);padding-bottom:14px;margin-bottom:26px;}
+  .sec-n{font-family:'Playfair Display',serif;font-weight:900;font-size:22px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;flex:0 0 auto;}
+  h2{font-size:clamp(22px,4vw,30px);font-weight:800;letter-spacing:-.01em;line-height:1.1;}
+  h3{font-size:19px;font-weight:800;margin:30px 0 12px;color:#fff;}
+  p{color:#cbd5e1;font-size:16px;margin:12px 0;}
+  .note{color:var(--muted);font-size:15px;}
+  strong{color:#fff;font-weight:700;}
+  .say{ background:linear-gradient(180deg,var(--card),var(--card2)); border:1px solid var(--border2); border-left:3px solid var(--gold); border-radius:12px; padding:16px 18px; margin:14px 0; }
+  .say .lbl{font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+  .say p{margin:0;color:#f1f5f9;font-size:16.5px;line-height:1.55;font-style:italic;}
+  .say p + p{margin-top:10px;}
+  .why{ background:rgba(245,158,11,.06); border:1px solid rgba(245,158,11,.20); border-radius:10px; padding:12px 15px; margin:12px 0; }
+  .why .lbl{font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:5px;}
+  .why p{margin:0;color:#e2e8f0;font-size:14.5px;}
+  .branch{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0;}
+  @media(max-width:700px){.branch{grid-template-columns:1fr;}}
+  .bcard{background:linear-gradient(180deg,var(--card),var(--card2));border:1px solid var(--border);border-radius:12px;padding:16px 18px;}
+  .bcard .bt{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:9px;}
+  .bcard.a .bt{color:var(--green);} .bcard.b .bt{color:var(--blue);}
+  .bcard p{margin:0;color:#e2e8f0;font-size:15px;font-style:italic;}
+  .obj{border-top:1px solid var(--border);padding-top:20px;margin-top:22px;}
+  .obj:first-of-type{border-top:none;padding-top:0;margin-top:0;}
+  .obj .q{font-size:17px;font-weight:800;color:#fff;}
+  .obj .q::before{content:"“";color:var(--gold);} .obj .q::after{content:"”";color:var(--gold);}
+  .callflow{background:rgba(96,165,250,.06);border:1px solid rgba(96,165,250,.22);border-radius:10px;padding:11px 15px;margin:14px 0;color:#dbeafe;font-size:14.5px;font-weight:600;}
+  .callflow b{color:#93c5fd;}
+  .dlg{margin:16px 0;}
+  .turn{margin:9px 0;font-size:15.5px;line-height:1.5;}
+  .turn .who{display:inline-block;min-width:64px;font-weight:800;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;vertical-align:top;}
+  .turn.s .who{color:var(--gold);} .turn.p .who{color:var(--muted2);}
+  .turn .txt{color:#e2e8f0;}
+  .turn.s .txt{color:#f1f5f9;}
+  .anno{margin:8px 0 8px 64px;font-size:13px;color:var(--gold);font-weight:600;}
+  .anno::before{content:"▸ ";}
+  .big{font-size:clamp(19px,3.6vw,25px);font-weight:900;line-height:1.25;margin:20px 0;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .foot{margin-top:70px;border-top:1px solid var(--border);padding-top:22px;color:var(--muted);font-size:14.5px;}
+  .foot a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(245,158,11,.4);}
+  .top{position:fixed;bottom:18px;right:18px;z-index:30;font-size:12.5px;font-weight:700;color:var(--muted);background:rgba(2,8,23,.82);border:1px solid var(--border);border-radius:999px;padding:8px 14px;text-decoration:none;backdrop-filter:blur(6px);}
+  .top:hover{color:var(--gold);border-color:var(--gold);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="mark"><span></span><span></span><span></span></div>
+  <div class="kicker">Rapid Reach &middot; Setter Deep Dive</div>
+  <h1>The Script, <span style="background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;">Broken Down</span></h1>
+  <p class="sub">The setter playbook gives you the beats. This breaks the actual call down line by line, gives you every objection word for word, and shows you two full calls start to finish. Learn it as a flow, not a read. Then be a person.</p>
+  <div id="top"></div>
+  <div class="toc">
+    <a href="#opener">1. Opener</a>
+    <a href="#fork">2. The Fork</a>
+    <a href="#discovery">3. Discovery</a>
+    <a href="#pitches">4. The Pitches</a>
+    <a href="#book">5. Book the Zoom</a>
+    <a href="#objections">6. Objections</a>
+    <a href="#examples">7. Example Calls</a>
+  </div>
+
+  <!-- 1 OPENER -->
+  <section id="opener">
+    <div class="sec-h"><span class="sec-n">01</span><h2>The Opener</h2></div>
+    <p>Keep it simple and go straight to the point. Say their name like you already know them, not "is this."</p>
+    <div class="say"><div class="lbl">Say this</div><p>"Hey, [Company] Detailing? ... Perfect. I was seeing if you could take on about 10 more details a week, or are you fully booked up right now?"</p></div>
+    <div class="why"><div class="lbl">Why the last 6 words matter</div><p>If you stop at "10 more details a week" you get hung up on way more. Adding "...or are you fully booked up?" flips it. Now they want to prove themselves to you, and their answer instantly tells you which road the call takes.</p></div>
+    <h3>If they catch you cold</h3>
+    <div class="say"><div class="lbl">"You're just cold calling me"</div><p>"I am, man. But let me tell you my offer real quick before you hang up on me, it will be worth the 30 seconds."</p></div>
+  </section>
+
+  <!-- 2 FORK -->
+  <section id="fork">
+    <div class="sec-h"><span class="sec-n">02</span><h2>The Fork</h2></div>
+    <p>The opener sends you down one of two roads. Read the answer, then go.</p>
+    <div class="branch">
+      <div class="bcard a"><div class="bt">Road A &middot; "Yeah, I can take more"</div><p>"Perfect, good energy! That's actually exactly why I called. I bring detailers 8 to 15 details a week, and I'm just checking who can handle that kind of volume so I can send it their way."</p></div>
+      <div class="bcard b"><div class="bt">Road B &middot; "No, I'm booked / slammed"</div><p>"Two weeks?! My man, you are killing it. What have you done to get booked out that far, you running ads?" (Get excited, get on their team.)</p></div>
+    </div>
+    <div class="big">"Booked up" is not a no. It is a different pitch.</div>
+    <p>Road A means they need <strong>work</strong> &rarr; Lead Gen. Road B means they are <strong>drowning in calls and leads</strong> &rarr; AI Receptionist or the Growth System. Either way, you keep going.</p>
+  </section>
+
+  <!-- 3 DISCOVERY -->
+  <section id="discovery">
+    <div class="sec-h"><span class="sec-n">03</span><h2>Discovery: diagnose like a doctor</h2></div>
+    <p>A doctor finds the pain before writing a script. Ask a lot of questions, listen, then say the pain back to them with a dollar figure on it so they <em>feel</em> it.</p>
+    <h3>The question ladder</h3>
+    <div class="say"><div class="lbl">Ask, in order, based on where they lead you</div><p>"Where do you get most of your jobs, word of mouth, Google, Facebook?"</p><p>"Are you running any marketing right now, or have you before? What on?"</p><p>"Are you the one answering the calls AND doing the detailing?"</p><p>"How many calls a day you think you're getting?"</p><p>"What time do you close? If I called after hours, straight to voicemail, or do you have something in place?"</p><p>"Roughly how many calls you missing a week? And what's your average interior-exterior detail run?"</p></div>
+    <h3>Then clarify the pain (out loud, with the number)</h3>
+    <div class="why"><div class="lbl">The math that closes</div><p>Detailing shops miss about <strong>1 in 3 calls</strong>. So: "You said 30 calls a week, that's 10 going missing. At a $250 ticket, that's $2,500 a week walking out the door, every week." Say it loud. Now they feel it, and you have earned the right to offer the fix.</p></div>
+  </section>
+
+  <!-- 4 PITCHES -->
+  <section id="pitches">
+    <div class="sec-h"><span class="sec-n">04</span><h2>The Pitches</h2></div>
+    <p>Pitch the ONE product that matches the pain you just diagnosed. Never dump all five.</p>
+
+    <h3>Lead Gen (Google Ads) &middot; the door-opener</h3>
+    <div class="say"><div class="lbl">The pitch</div><p>"We get your company ranked number one on Google, so anytime someone searches 'detailing near me,' you own that spot. That brings you 8 to 15 details a week. No money up front, fully performance based, and we cover the ad spend."</p></div>
+    <div class="say"><div class="lbl">The price (pattern interrupt)</div><p>"How much? That's the best part, you ready? No money up front. We only charge 10% of your interior-exterior detail, regardless of the job I bring you. So Dexter, if your detail is $250, I'm only asking $25. And even if I send you a $1,000 ceramic coating, still just $25."</p></div>
+    <div class="why"><div class="lbl">Note</div><p>This is the ONLY product where you say the price on the phone, it sells itself. It is almost a no-brainer. For a defensive, "I get these calls all the time" client, go straight here.</p></div>
+
+    <h3>AI Receptionist &middot; sell the freedom</h3>
+    <div class="say"><div class="lbl">The pitch (after the missed-call math)</div><p>"If I told you I had something that answers every one of those missed calls so they never go to another detailer, they stay with you, would you at least be open to hearing what it sounds like? Two ways we set it up: it can be your full 24/7 receptionist, or just a backup that catches the calls you miss. Either way, you never lose a job to a missed call again."</p></div>
+    <div class="why"><div class="lbl">Note</div><p>Modeled in their own voice, hyper-realistic. The backup (missed-calls-only) is the easy yes almost nobody turns down. Sell the freedom of never touching the phone, not the tech.</p></div>
+
+    <h3>Website</h3>
+    <div class="say"><div class="lbl">The opener (when they have no site)</div><p>"Hey, I was actually looking online to book with you guys and couldn't find a website. Do you have a place people can book, or no?"</p></div>
+    <div class="say"><div class="lbl">The pitch</div><p>"We build two kinds. One that just looks clean, and one that's SEO and AEO, meaning you pop up on Google AND on ChatGPT when people ask for a detailer. I can't quote you a price blind, same as you can't price a detail without seeing the car. Let's hop on a quick Zoom, I'll show you a demo."</p></div>
+
+    <h3>Detailer Growth System (DGS)</h3>
+    <div class="say"><div class="lbl">The entry</div><p>"All these jobs and customers coming in, are you tracking them in a CRM, or are they kind of just sitting up in your head?"</p></div>
+    <div class="say"><div class="lbl">The pitch</div><p>"Our Growth System tracks every single lead, sends mass texts to re-activate old customers with one click, auto-requests a Google review after every detail, and can add a booking page to your site. Here's the big one: most shops slow down in winter because they never kept track of old clients. We work with a guy in Minnesota who used to quit detailing half the year for a 9-to-5. First year on our system, he detailed year-round. Never went back."</p></div>
+    <div class="why"><div class="lbl">The campaign math</div><p>"You do 10 details a week, that's 40 a month. Imagine you send a ceramic-coating campaign to those 40 people. Convert 10%, that's 4 ceramic jobs you just pulled out of customers you already had."</p></div>
+
+    <h3>Meta / Facebook ads (ceramic)</h3>
+    <div class="say"><div class="lbl">The qualifier + pitch</div><p>"Do you only do detailing, or ceramic coatings too? ... How many more ceramic jobs could you take on a week? ... Perfect. We run Facebook and Instagram ads that bring in 3 to 4 high-ticket ceramic jobs a week. Let's hop on a Zoom to see if it's a fit."</p></div>
+    <div class="why"><div class="lbl">Note</div><p>Pricing lives on the closing call. You just qualify the interest and book.</p></div>
+  </section>
+
+  <!-- 5 BOOK -->
+  <section id="book">
+    <div class="sec-h"><span class="sec-n">05</span><h2>Book the Zoom</h2></div>
+    <p>This is the only thing you're actually here to do. Frame it as no-pressure and flip the ego.</p>
+    <div class="say"><div class="lbl">Say this</div><p>"Let's hop on a quick Zoom with our closer so you can see exactly how it works and we can see if you'd even be a good fit for us. I'm not asking for your card or anything today, worst case, we make a friend."</p></div>
+    <div class="callflow"><b>Then lock it, never yes/no:</b> "Today or tomorrow?" &rarr; "Morning or evening?" &rarr; "What about 2pm?" &rarr; get their last name + best email &rarr; book it on the Rapid Reach page.</div>
+    <div class="why"><div class="lbl">The ego flip</div><p>"See if you're a good fit for <em>us</em>" puts the pressure on them, not you. You just handed them a crazy opportunity. If they mention a business partner: "Perfect, let's get all three of us on so everyone's on the same page."</p></div>
+  </section>
+
+  <!-- 6 OBJECTIONS -->
+  <section id="objections">
+    <div class="sec-h"><span class="sec-n">06</span><h2>Objection Handling</h2></div>
+    <p>An objection is not a wall, it's a request for more certainty. Handle it, then point right back at the Zoom every single time.</p>
+
+    <div class="obj"><div class="q">What's this going to cost me?</div>
+      <div class="say"><div class="lbl">Say this (any product except Lead Gen)</div><p>"Honestly, it's like you calling me to detail your car, I can't price it until I see it. Might have pet hair, might be spotless. It depends what you're looking to implement. That's exactly what the Zoom is for, we'll build it to your shop. Let's hop on."</p></div>
+      <div class="why"><div class="lbl">Why</div><p>Don't give a random number or even a range, it only sounds expensive with no context. For Lead Gen, do the opposite: hit them with the pattern interrupt price, it's your strongest card.</p></div>
+    </div>
+
+    <div class="obj"><div class="q">I need to think about it</div>
+      <div class="say"><div class="lbl">Say this</div><p>"Totally fair. Usually when someone says that, it's one of two things, money or trust. Real quick, do you think this would actually solve the problem we just talked about? ... Then let's at least hop on the call and see if it's a fit, no pressure."</p></div>
+      <div class="say"><div class="lbl">If they've been "thinking about it" forever</div><p>"You told me you've wanted this for two years. Be honest, what changes from thinking about it today versus tomorrow? You've got the chance to fix it right now. Are you the owner who steps up and makes a decision, or the one who stays in the same cycle? Who do you want to be today?"</p></div>
+    </div>
+
+    <div class="obj"><div class="q">I get these calls all the time / you're the same as everyone</div>
+      <div class="say"><div class="lbl">Say this</div><p>"I hear that all the time, until I tell people my offer. No money up front, only 10% of your detail, regardless of the job. I bet you get a lot of these calls, but I promise you have never heard a model like this one. Give me five seconds."</p></div>
+      <div class="why"><div class="lbl">Why</div><p>Defensive client = go straight to Lead Gen. "No money up front" disarms the wall instantly.</p></div>
+    </div>
+
+    <div class="obj"><div class="q">Is this one of those AI things? / AI is garbage, my customers like a real person</div>
+      <div class="say"><div class="lbl">Say this</div><p>"That's exactly what I said before I got into this, and what every one of our customers said before they heard it. We model it in your own voice, it sounds hyper-realistic. And we can set it to only catch your missed calls, so the ones you answer still get the real you. You've got to hear it, that's what everyone says right up until they do. Let me show you on the Zoom."</p></div>
+    </div>
+
+    <div class="obj"><div class="q">Just send me some info</div>
+      <div class="say"><div class="lbl">Say this</div><p>"I could, but info in an email doesn't show you much. Easiest is a quick 15-minute Zoom where we walk it visually. Worst case, we make a friend. Today or tomorrow better?"</p></div>
+    </div>
+
+    <div class="obj"><div class="q">How do I know this even works?</div>
+      <div class="say"><div class="lbl">Say this</div><p>"We're already doing it for detailers all over the US, consistent bookings and repeat customers. And with the Google Ads, we literally show you what we do for two weeks first. That's how you know."</p></div>
+    </div>
+
+    <div class="obj"><div class="q">What if I don't make any money?</div>
+      <div class="say"><div class="lbl">Say this</div><p>"That's the beauty of the lead gen, there's no upfront risk. We only get paid when we actually send you qualified jobs. And we show you before you commit."</p></div>
+    </div>
+
+    <div class="obj"><div class="q">I need to talk to my business partner</div>
+      <div class="say"><div class="lbl">Say this</div><p>"Perfect, let's get all three of us on the Zoom so you're both on the same page and nobody has to relay it. What works for the two of you, today or tomorrow?"</p></div>
+    </div>
+
+    <div class="big">Every objection ends the same way: back to the Zoom.</div>
+  </section>
+
+  <!-- 7 EXAMPLES -->
+  <section id="examples">
+    <div class="sec-h"><span class="sec-n">07</span><h2>Two Full Calls</h2></div>
+    <p>Here's how it all strings together. Read these out loud a few times.</p>
+
+    <h3>Call 1 &middot; Booked shop &rarr; AI Receptionist</h3>
+    <div class="dlg">
+      <div class="turn s"><span class="who">You</span><span class="txt">Hey, Grand Detailing? Perfect. I was seeing if you could take on about 10 more details a week, or are you fully booked up right now?</span></div>
+      <div class="turn p"><span class="who">Shop</span><span class="txt">Honestly, I'm pretty booked out for the next couple weeks.</span></div>
+      <div class="turn s"><span class="who">You</span><span class="txt">Two weeks?! My man, you're killing it. You running ads on Google or Facebook?</span></div>
+      <div class="turn p"><span class="who">Shop</span><span class="txt">Mostly word of mouth, little bit of Facebook.</span></div>
+      <div class="anno">Get excited, then dig for the calls.</div>
+      <div class="turn s"><span class="who">You</span><span class="txt">Love it. So with the Facebook, your phone's probably going off all day, huh? How many calls a day you think?</span></div>
+      <div class="turn p"><span class="who">Shop</span><span class="txt">A lot. Maybe 15.</span></div>
+      <div class="turn s"><span class="who">You</span><span class="txt">And are you the one answering AND doing the detailing? What time you close, and if I called after hours, voicemail or something in place?</span></div>
+      <div class="turn p"><span class="who">Shop</span><span class="txt">Yeah it's me. After hours we just call back the next morning.</span></div>
+      <div class="turn s"><span class="who">You</span><span class="txt">Okay. So how many calls you think you're missing a week? And your detail runs about?</span></div>
+      <div class="turn p"><span class="who">Shop</span><span class="txt">Maybe 10 to 15. Detail's around $250.</span></div>
+      <div class="anno">Now clarify the pain with the number.</div>
+      <div class="turn s"><span class="who">You</span><span class="txt">So respectfully, that's about $2,500 a week walking out the door on missed calls alone, and you already do great work. If I had something that answered every one of those, so they stay with you instead of the next guy, would you at least be open to hearing it?</span></div>
+      <div class="turn p"><span class="who">Shop</span><span class="txt">Yeah... is this one of those AI things though?</span></div>
+      <div class="turn s"><span class="who">You</span><span class="txt">It is, and that's exactly what everyone says before they hear it. We model it in your own voice, hyper-realistic, and it can just catch your missed calls. Let's hop on a quick Zoom with my partner and I so you can hear it. You mentioned a business partner, let's get all three on. Today or tomorrow?</span></div>
+      <div class="turn p"><span class="who">Shop</span><span class="txt">Tomorrow afternoon.</span></div>
+      <div class="turn s"><span class="who">You</span><span class="txt">Perfect, I've got a 4pm open, that work? What's the best email to send the invite? Great, you're booked.</span></div>
+    </div>
+
+    <h3>Call 2 &middot; Room for work &rarr; Google Ads</h3>
+    <div class="dlg">
+      <div class="turn s"><span class="who">You</span><span class="txt">Hey, Grand Detailing? Perfect. You guys pretty booked up, or could you take on around 10 more details a week?</span></div>
+      <div class="turn p"><span class="who">Shop</span><span class="txt">Yeah, I could take on 10 more.</span></div>
+      <div class="turn s"><span class="who">You</span><span class="txt">Perfect, that's exactly why I called. I work with a couple detailers in the area getting them 8 to 15 more bookings a week, just seeing who could handle it. Where do you get most of your leads right now?</span></div>
+      <div class="turn p"><span class="who">Shop</span><span class="txt">Mostly word of mouth. Tried Facebook, kind of stopped.</span></div>
+      <div class="turn s"><span class="who">You</span><span class="txt">Totally fair. So what we do is run your Google Ads and get you ranked at the top, so when people search detailing in your area, you're the one they see first. You own that spot.</span></div>
+      <div class="turn p"><span class="who">Shop</span><span class="txt">Okay... how much is this gonna cost me though?</span></div>
+      <div class="turn s"><span class="who">You</span><span class="txt">That's the best part, you ready? Zero up front, we even cover the ad spend. All we ask is 10% of the interior-exterior detail. So if yours is $300, that's $30 on the back end, and even if someone books a $1,000 ceramic, still just $30.</span></div>
+      <div class="turn p"><span class="who">Shop</span><span class="txt">So I could get a $1,000 ceramic for $30? What's the next step?</span></div>
+      <div class="turn s"><span class="who">You</span><span class="txt">Love it. Quick Zoom with our closer to walk you through it and make sure you're a fit. Are you more open today or tomorrow? ... Morning or afternoon? What's the best email?</span></div>
+    </div>
+    <div class="why"><div class="lbl">Notice</div><p>Both calls: same opener, read the fork, dig for pain, land on ONE product, handle the price, book the Zoom with a this-or-that. That's the whole job.</p></div>
+  </section>
+
+  <div class="foot">
+    Back to the <a href="index.html">Setter Playbook</a> &middot; the <a href="https://grantenyeart.github.io/services-playbook/" target="_blank" rel="noopener">Services Playbook</a>. Learn the beats, then be a person. Now go set.
+  </div>
+
+</div>
+<a href="#top" class="top">&uarr; Top</a>
+</body>
+</html>
