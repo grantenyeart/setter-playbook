@@ -91,6 +91,19 @@
   .vid{position:relative;width:100%;padding-bottom:56.25%;height:0;border-radius:14px;overflow:hidden;border:1px solid var(--border2);box-shadow:0 12px 34px rgba(0,0,0,.42);background:#000;}
   .vid iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
   .vidlink{display:inline-block;margin-top:11px;color:var(--gold);text-decoration:none;font-size:14px;font-weight:600;border-bottom:1px solid rgba(245,158,11,.4);}
+  .teardown{background:linear-gradient(180deg,var(--card),var(--card2));border:1px solid var(--border2);border-radius:16px;padding:22px;margin-top:10px;}
+  .td-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media(max-width:700px){.td-cols{grid-template-columns:1fr;}}
+  .td-col{border-radius:12px;padding:16px 18px;}
+  .td-col.good{background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.22);}
+  .td-col.fix{background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.22);}
+  .td-lbl{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:13px;}
+  .td-lbl.good{color:var(--green);} .td-lbl.fix{color:var(--gold);}
+  .td-col ul{list-style:none;display:flex;flex-direction:column;gap:11px;}
+  .td-col li{font-size:14.5px;line-height:1.45;color:#dbe3ee;padding-left:21px;position:relative;}
+  .td-col.good li::before{content:"\2713";position:absolute;left:0;color:var(--green);font-weight:800;}
+  .td-col.fix li::before{content:"\2192";position:absolute;left:0;color:var(--gold);font-weight:800;}
+  .td-col li b{color:#fff;}
   .foot{margin-top:70px;border-top:1px solid var(--border);padding-top:22px;color:var(--muted);font-size:14.5px;}
   .foot a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(245,158,11,.4);}
   .top{position:fixed;bottom:18px;right:18px;z-index:30;font-size:12.5px;font-weight:700;color:var(--muted);background:rgba(2,8,23,.82);border:1px solid var(--border);border-radius:999px;padding:8px 14px;text-decoration:none;backdrop-filter:blur(6px);}
@@ -114,6 +127,7 @@
     <a href="#objections">6. Objections</a>
     <a href="#examples">7. Example Calls</a>
     <a href="#watch">8. Watch Real Calls</a>
+    <a href="#teardown">9. Call Teardown</a>
   </div>
 
   <!-- 1 OPENER -->
@@ -290,6 +304,39 @@
       <div class="vidlabel">Cold Call <span>&middot; a live close (~10 min)</span></div>
       <div class="vid"><iframe src="https://www.loom.com/embed/cef94a3d11514aebb6fa813e9508dccc" title="Cold Call - Live Close" loading="lazy" allowfullscreen></iframe></div>
       <a class="vidlink" href="https://www.loom.com/share/cef94a3d11514aebb6fa813e9508dccc" target="_blank" rel="noopener">Open on Loom &rarr;</a>
+    </div>
+  </section>
+
+  <!-- 9 CALL TEARDOWN -->
+  <section id="teardown">
+    <div class="sec-h"><span class="sec-n">09</span><h2>Call Teardown</h2></div>
+    <p>A real first-week call from one of our own setters, Dexter. A booked, skeptical 30-year shop that tried to end the call twice, and he still booked the Zoom. This is the good kind of hard. Watch what he nails, then what to clean up, green flags and red flags on the same real call.</p>
+    <div class="teardown">
+      <div class="td-cols">
+        <div class="td-col good">
+          <div class="td-lbl good">What he did right</div>
+          <ul>
+            <li><b>Didn't fold on "no, we're booked."</b> Hit "you must be killing it" and kept the call alive instead of hanging up.</li>
+            <li><b>Refused the brush-off.</b> When the owner said "hit me up in the off-season," he came back with "only reason I ask..." and reopened it.</li>
+            <li><b>Pivoted to the right product.</b> Booked shop &rarr; after-hours calls &rarr; AI receptionist. He matched the pain.</li>
+            <li><b>Ran the money math out loud</b> off their real ticket ($325 a detail).</li>
+            <li><b>Adapted on the fly.</b> They already had an answering service, so he sold after-hours coverage + booking straight into the calendar + follow-up.</li>
+            <li><b>Ground through a messy scheduling mess</b> (vacation, time zones) and still locked a specific slot.</li>
+            <li><b>Closed on a this-or-that,</b> not a yes/no, and got the name and email.</li>
+          </ul>
+        </div>
+        <div class="td-col fix">
+          <div class="td-lbl fix">What to clean up</div>
+          <ul>
+            <li><b>Diagnose before you math.</b> He put dollars on missed calls before confirming they miss any, and got "we answer every call." Ask first, then math their number.</li>
+            <li><b>Nail the name.</b> He mixed it up more than once. Grab it early and use the real one all call.</li>
+            <li><b>Be clear on times.</b> "12:12am" cost a minute of confusion. Say "5pm Eastern," then repeat the booking back clean.</li>
+            <li><b>Tighten the opener.</b> Straight to "you guys booked up, or could you take 10 more details a week?"</li>
+            <li><b>Load the AI reveal.</b> When they ask "is this AI?": "It is, modeled in your voice. That's what everyone says right before they hear it."</li>
+            <li><b>Frame the Zoom as the closer's call,</b> not "I look forward to working with you."</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
