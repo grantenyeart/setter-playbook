@@ -92,6 +92,9 @@
   .vid iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
   .vidlink{display:inline-block;margin-top:11px;color:var(--gold);text-decoration:none;font-size:14px;font-weight:600;border-bottom:1px solid rgba(245,158,11,.4);}
   .teardown{background:linear-gradient(180deg,var(--card),var(--card2));border:1px solid var(--border2);border-radius:16px;padding:22px;margin-top:10px;}
+  .td-rec{margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--border);}
+  .td-rec .rl{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:11px;}
+  .td-rec audio{width:100%;display:block;}
   .td-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
   @media(max-width:700px){.td-cols{grid-template-columns:1fr;}}
   .td-col{border-radius:12px;padding:16px 18px;}
@@ -312,6 +315,10 @@
     <div class="sec-h"><span class="sec-n">09</span><h2>Call Teardown</h2></div>
     <p>A real first-week call from one of our own setters, Dexter. A booked, skeptical 30-year shop that tried to end the call twice, and he still booked the Zoom. This is the good kind of hard. Watch what he nails, then what to clean up, green flags and red flags on the same real call.</p>
     <div class="teardown">
+      <div class="td-rec">
+        <div class="rl">The recording &middot; ~6 min</div>
+        <audio controls preload="none" src="dexter-ai-call.mp3">Your browser can't play this. <a href="dexter-ai-call.mp3">Download the recording</a>.</audio>
+      </div>
       <div class="td-cols">
         <div class="td-col good">
           <div class="td-lbl good">What he did right</div>
